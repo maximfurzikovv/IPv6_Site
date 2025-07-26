@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Протокол IPv6</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="css/styles.css" rel="stylesheet">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <div id="app" class="flex-grow-1 d-flex flex-column">
+      <header-component></header-component>
+      <tabs-component :tabs="tabs" :start-tab="activeTab" @change-tab="changeTab"></tabs-component>
+    <div class="container">
+      <div v-show="activeTab === 'about'">
+        <info-component></info-component>
+      </div>
+      <div v-show="activeTab === 'history'">
+        <history-component></history-component>
+      </div>
+      <div v-show="activeTab === 'advantage'">
+        <advantage-component></advantage-component>
+      </div>
+      <div v-show="activeTab === 'comparison'">
+        <comparison-component></comparison-component>
+      </div>
+      <div v-show="activeTab === 'form'">
+        <form-component @form-submit="showModal"></form-component>
+      </div>
+
+    </div>
+      <footer-component></footer-component>
+    <div class="modal fade" id="formModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">{{ modalTitle }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <p>{{ modalMessage }}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Закрыть</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/script.js"></script>
+</body>
+</html>
